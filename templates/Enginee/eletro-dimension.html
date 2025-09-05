@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% block content %}
+
+      <div class="div-alin">
+        <div class="form-group" id="form-select" style="padding-bottom: 10px;">
+          <label>Suggested Conduit</label>
+          <input type="text" class="form-control-0" id="varResult2" placeholder=" --" disabled style="width: 300px; padding-left: 5px;">
+        </div>
+        <table class="table table-bordered" id="table-align">
+          <thead>
+            <tr>
+              <th style="width: 10px">#</th>
+              <th>Circuit Data</th>
+              <th>Data</th>
+            </tr>
+          </thead>
+          <tbody> 
+            <tr>
+            <td>1.</td>
+              <td>Choose the First Cable Gauge</td>
+              <td>
+                <input type="number" id="bitola1" placeholder="Ø" min="1" class="form-control" />
+              </td>
+            </tr>
+            <tr>
+              <td>2.</td>
+              <td>Number of cables</td>
+              <td>
+                <input type="number" id="quanty1" placeholder="Quantity" min="1" class="form-control" />
+              </td>
+            </tr>
+            <tr>
+              <td>3.</td>
+                <td>Choose the Second Cable Gauge</td>
+                <td>
+                  <input type="number" id="bitola2" placeholder="Ø" min="1" class="form-control" />
+                </td>
+              </tr>
+              <tr>
+                <td>4.</td>
+                <td>Number of cables</td>
+                <td>
+                  <input type="number" id="quanty2" placeholder="Quantity" min="1" class="form-control" />
+                </td>
+              </tr>
+              <tr>
+                <td>5.</td>
+                  <td>Choose the Third Cable Gauge</td>
+                  <td>
+                    <input type="number" id="bitola3" placeholder="Ø" min="1" class="form-control" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>6.</td>
+                  <td>Number of cables</td>
+                  <td>
+                    <input type="number" id="quanty3" placeholder="Quantity" min="1" class="form-control" />
+                  </td>
+                </tr>
+          </tbody>
+        </table>
+        <button type="submit" class="btn btn-info" onclick="suggestEletro2()">Sugerir Eletroduto</button>
+        <button type="button" class="btn btn-secondary" onclick="clearForm()">Clear</button>
+      </div>
+
+<script>
+
+  function clearForm() {
+      // limpa as bitolas e quantidades
+      document.getElementById("bitola1").value = "";
+      document.getElementById("quanty1").value = "";
+      document.getElementById("bitola2").value = "";
+      document.getElementById("quanty2").value = "";
+      document.getElementById("bitola3").value = "";
+      document.getElementById("quanty3").value = "";
+
+      // limpa o resultado
+      document.getElementById("varResult2").value = "";
+  }
+
+function suggestEletro2() {
+    // pegar valores do formulário
+    const bitolas = [
+        {diam: parseFloat(document.getElementById("bitola1").value), qty: parseInt(document.getElementById("quanty1").value)},
+        {diam: parseFloat(document.getElementById("bitola2").value), qty: parseInt(document.getElementById("quanty2").value)},
+        {diam: parseFloat(document.getElementById("bitola3").value), qty: parseInt(document.getElementById("quanty3").value)}
+    ];
+
+    // se todos os campos estiverem vazios ou zero, limpa e retorna
+    const allEmpty = bitolas.every(c => !c.diam || !c.qty);
+    if (allEmpty) {
+        document.getElementById("varResult2").value = "";
+        return;
+    }
+
+    // calcula área total dos cabos
+    let totalCableArea = 0;
+    bitolas.forEach(c => {
+        if (c.diam > 0 && c.qty > 0) {
+            let areaCabo = Math.PI * Math.pow(c.diam/2, 2);
+            totalCableArea += areaCabo * c.qty;
+        }
+    });
+
+    // lista de eletrodutos
+    const conduits = [
+        {name: '1/2"', diam: 16},
+        {name: '3/4"', diam: 21},
+        {name: '1"', diam: 27},
+        {name: '1 1/4"', diam: 35},
+        {name: '1 3/4"', diam: 45},
+        {name: '2"', diam: 53},
+        {name: '3"', diam: 78},
+        {name: '4"', diam: 103},
+    ];
+
+    // procurar o menor conduíte que atende
+    let selected = null;
+    for (let c of conduits) {
+        let area = Math.PI * Math.pow(c.diam/2, 2);
+        let areaUtil = area * 0.40;
+        if (totalCableArea <= areaUtil) {
+            selected = c.name;
+            break;
+        }
+    }
+
+    // mostrar resultado
+    if (selected) {
+        document.getElementById("varResult2").value = selected;
+    } else {
+        // se precisar de mais que 4"
+        document.getElementById("varResult2").value = "Consider using cable trays";
+    }
+}
+
+
+
+</script>
+
+
+{% endblock %}

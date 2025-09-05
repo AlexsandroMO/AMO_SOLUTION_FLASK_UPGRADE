@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-4">
+  <h2>Upload de Arquivo Excel</h2>
+  <form action="{{ url_for('excel_upload') }}" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" accept=".xls,.xlsx" required class="form-control mb-3">
+    <button type="submit" class="btn btn-primary">Carregar</button>
+  </form>
+</div>
+
+{% endblock %}

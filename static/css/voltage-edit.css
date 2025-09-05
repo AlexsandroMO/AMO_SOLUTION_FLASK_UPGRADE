@@ -1,0 +1,139 @@
+/* .table-bordered{
+
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  margin-bottom: 50px;
+
+  border-collapse: separate;
+  border-spacing: 0; 
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  overflow: hidden;
+} */
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+@media (max-width: 600px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    thead tr {
+        display: none;
+    }
+
+    tr {
+        margin-bottom: 15px;
+    }
+
+    td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 15px;
+        font-weight: bold;
+        text-align: left;
+    }
+}
+
+td {
+  position: relative; /* container de referência */
+}
+
+.hover-text {
+  display: none;
+  position: absolute;
+  top: 100%;   /* logo abaixo do texto */
+  left: 0;
+  background: #333;
+  color: hsl(0, 0%, 0%);
+  padding: 8px 14px;   /* mais espaço interno */
+  border-radius: 6px;
+  font-size: 14px;     /* aumenta o texto */
+  min-width: 320px;    /* largura mínima maior */
+  max-width: 400px;    /* evita ficar exagerado */
+  white-space: normal; /* permite quebra de linha */
+  z-index: 10;
+}
+
+td:hover .hover-text {
+  display: block;
+}
+
+/* 📱 Mobile: tooltip sempre visível */
+@media (max-width: 768px) {
+  .hover-text {
+    display: block;
+    position: relative; /* fica fixo abaixo do texto */
+    top: 5px;
+    left: 0;
+    margin-top: 4px;
+  }
+}
+
+.badge{
+color: #333;
+}
+
+.card-header {
+  display: flex;
+  justify-content: center; /* centraliza horizontal */
+  align-items: center;     /* centraliza vertical */
+  padding: 20px;           /* top e bottom, ajustável */
+  background-color: #947575;
+  color: #fff;             /* para contraste no texto */
+  border-radius: 12px;
+}
+
+.form-group{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/* Mostrar */
+.hover-container {
+  position: relative;
+  display: inline-block;
+}
+
+.hover-text {
+  display: none;
+  position: absolute;
+  background: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 6px;
+  font-size: 12px;
+  width: 220px;
+  top: 100%;
+  left: 0;
+  z-index: 10;
+}
+
+.hover-container:hover .hover-text {
+  display: block;
+}
+
+#mostrar1, #mostrar2 {
+  display: none;
+}
+

@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% block content %}
+  
+    <div class="div-alin"> 
+      <div class="form-group" id="form-select" style="padding-bottom: 10px;">
+          <label>Suggested Cable Tray </label>
+          <input type="text" class="form-control-0" id="suggestion2" placeholder=" --" style="width: 300px; padding-left: 5px;" disabled >
+      </div>
+      <table class="table table-bordered" id="table-align">
+          <thead>
+              <tr>
+                  <th style="width: 10px">#</th>
+                  <th>Options</th>
+                  <th>Data</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1.</td>
+                <td>Choose the First Cable Gauge</td>
+                <td>
+                  <input type="number" id="bitola1" placeholder="Ø" min="1" class="form-control" />
+                </td>
+              </tr>
+              <tr>
+                <td>2.</td>
+                <td>Number of cables</td>
+                <td>
+                  <input type="number" id="quantity1" placeholder="Quantity" min="1" class="form-control" />
+                </td>
+              </tr>
+              <tr>
+                <td>3.</td>
+                  <td>Choose the Second Cable Gauge</td>
+                  <td>
+                    <input type="number" id="bitola2" placeholder="Ø" min="1" class="form-control" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>4.</td>
+                  <td>Number of cables</td>
+                  <td>
+                    <input type="number" id="quantity2" placeholder="Quantity" min="1" class="form-control" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>5.</td>
+                    <td>Choose the Third Cable Gauge</td>
+                    <td>
+                      <input type="number" id="bitola3" placeholder="Ø" min="1" class="form-control" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>6.</td>
+                    <td>Number of cables</td>
+                    <td>
+                      <input type="number" id="quantity3" placeholder="Quantity" min="1" class="form-control" />
+                    </td>
+                  </tr>
+          </tbody>
+      </table>
+      <button type="button" class="btn btn-info" onclick="suggestTray2()">Sugerir Eletrcalha</button>
+      <button type="button" class="btn btn-secondary" onclick="clearTrayForm()">Clear</button>
+
+  </div>
+
+<script>
+
+  function suggestTray2() {
+    // pegar valores do formulário
+    const bitolas = [
+        {diam: parseFloat(document.getElementById("bitola1").value), qty: parseInt(document.getElementById("quantity1").value)},
+        {diam: parseFloat(document.getElementById("bitola2").value), qty: parseInt(document.getElementById("quantity2").value)},
+        {diam: parseFloat(document.getElementById("bitola3").value), qty: parseInt(document.getElementById("quantity3").value)}
+    ];
+
+    // se todos os campos estiverem vazios ou zero, limpa e retorna
+    const allEmpty = bitolas.every(c => !c.diam || !c.qty);
+    if (allEmpty) {
+        document.getElementById("suggestion2").value = "";
+        return;
+    }
+
+    // calcula área total dos cabos
+    let totalCableArea = 0;
+    bitolas.forEach(c => {
+        if (c.diam > 0 && c.qty > 0) {
+            let areaCabo = Math.PI * Math.pow(c.diam/2, 2);
+            totalCableArea += areaCabo * c.qty;
+        }
+    });
+
+    // lista de bandejas possíveis (altura x largura) em mm
+    const trays = [
+        {altura: 50, largura: 50},
+        {altura: 50, largura: 100},
+        {altura: 100, largura: 100},
+        {altura: 50, largura: 200},
+        {altura: 100, largura: 200},
+        {altura: 50, largura: 300},
+        {altura: 100, largura: 300},
+        {altura: 100, largura: 400},
+        {altura: 100, largura: 500},
+        {altura: 100, largura: 600},
+        {altura: 100, largura: 700},
+        {altura: 100, largura: 800},
+        {altura: 100, largura: 900},
+        {altura: 100, largura: 1000}
+    ];
+
+    // procurar a menor bandeja que atende (área útil 40%)
+    let selected = null;
+    for (let t of trays) {
+        let areaTray = t.altura * t.largura;
+        let areaUtil = areaTray * 0.40;
+        if (totalCableArea <= areaUtil) {
+            selected = `${t.altura} x ${t.largura} mm`;
+            break;
+        }
+    }
+
+    // mostrar resultado
+    if (selected) {
+        document.getElementById("suggestion2").value = selected;
+    } else {
+        document.getElementById("suggestion2").value = "Consider using multiple trays";
+    }
+  }
+
+  // Função para limpar todos os campos da bandeja
+  function clearTrayForm() {
+      document.getElementById("bitola1").value = "";
+      document.getElementById("quantity1").value = "";
+      document.getElementById("bitola2").value = "";
+      document.getElementById("quantity2").value = "";
+      document.getElementById("bitola3").value = "";
+      document.getElementById("quantity3").value = "";
+      document.getElementById("suggestion2").value = "";
+  }
+
+</script>
+  {% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/meds.css') }}" />
+
+<div class="container py-3" style="max-width:820px;">
+  <h3>Agendar: {{ med.name }}</h3>
+  <form method="post">
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label class="form-label d-block">Dias da semana</label>
+        {% set days = [
+          (0,"Seg"), (1,"Ter"), (2,"Qua"), (3,"Qui"), (4,"Sex"), (5,"Sáb"), (6,"Dom")
+        ] %}
+        {% for d in days %}
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="days" id="d{{ d[0] }}" value="{{ d[0] }}">
+            <label class="form-check-label" for="d{{ d[0] }}">{{ d[1] }}</label>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Horários (separe por vírgula, ex: 08:00, 13:00, 20:30)</label>
+        <input class="form-control" name="times" placeholder="08:00, 20:00">
+      </div>
+    </div>
+    <div class="mt-3 d-flex gap-2">
+      <button class="btn btn-primary">Salvar agendamentos</button>
+      <a href="{{ url_for('meds.dashboard') }}" class="btn btn-outline-secondary">Voltar</a>
+    </div>
+  </form>
+  <hr>
+  <h5>Agendamentos atuais</h5>
+  <ul class="list-group">
+    {% for s in scheds %}
+      <li class="list-group-item">
+        Dia: {{ ["Seg","Ter","Qua","Qui","Sex","Sáb","Dom"][s.weekday] }} • Hora: {{ s.time }}
+      </li>
+    {% else %}
+      <li class="list-group-item">Nenhum agendamento definido.</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

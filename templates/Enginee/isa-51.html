@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+</style>
+
+      <div class="div-alin">
+        <div class="form-group" id="form-select">
+          <div class="form-group2">
+            <label>Functional Identification Table - Instrumentation</label>
+            <table id="table">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th colspan="2">First Letter</th>
+                  <th colspan="3">Subsequent Letters</th>
+                </tr>
+                <tr>
+                  <th>-</th>
+                  <th>Measured Variable or Initial</th>
+                  <th>Modifier</th>
+                  <th>Information or Passive Function</th>
+                  <th>Final Function</th>
+                  <th>Modifier</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      </section>
+    </div>
+
+
+  <!-- base controll -->
+  <script src="https://code.jquery.com/jquery-3.4.0.min.js"
+    integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+    integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o"
+    crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- jQuery -->
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <script>
+    $.widget.bridge('uibutton', $.ui.button)
+  </script>
+
+  <script>
+
+    var lista_isa = [
+
+    ["A", "Analyzer", "Alarm", "Alarm", "Alarm", "Alarm"],
+    ["B", "Burner Flame", "Undefined", "Undefined", "Undefined", "Undefined"],
+    ["C", "Electrical Conductivity", "Controller", "Controller", "Controller", "Controller"],
+    ["D", "Density or Specific Mass", "Differential", "Differential", "Differential", "Differential"],
+    ["E", "Electric Voltage", "Primary Element", "Primary Element", "Primary Element", "Primary Element"],
+    ["F", "Flow", "Rate", "Rate", "Rate", "Rate"],
+    ["G", "Dimensional Measurement", "Display", "Display", "Display", "Display"],
+    ["H", "Manual Control", "High", "High", "High", "High"],
+    ["I", "Electric Current", "Indicator", "Indicator", "Indicator", "-"],
+    ["J", "Power", "Selector", "-", "Selector", "-"],
+    ["K", "No Definition Exists", "No Definition Exists", "No Definition Exists", "No Definition Exists", "No Definition Exists"],
+    ["L", "Level", "Low", "Pilot Light", "Low", "Low"],
+    ["M", "Humidity", "-", "-", "-", "-"],
+    ["N", "Undefined", "Undefined", "Undefined", "Undefined", "Undefined"],
+    ["O", "Undefined", "-", "Restriction Orifice", "-", "-"],
+    ["P", "Pressure", "-", "Test Point", "-", "-"],
+    ["Q", "Quantity", "Totalizer", "Totalizer", "Totalizer", "Totalizer"],
+    ["R", "Radioactivity", "-", "Recorder", "-", "-"],
+    ["S", "Speed", "Safety", "Switch", "Switch", "Switch"],
+    ["T", "Temperature", "Transmitter", "Transmitter", "Transmitter", "-"],
+    ["U", "Multivariable", "Multifunction", "Multifunction", "Multifunction", "Multifunction"],
+    ["V", "Viscosity", "Valve", "Valve", "Valve", "Valve"],
+    ["W", "Weight or Force", "-", "Well", "-", "-"],
+    ["X", "Not Classified", "Not Classified", "Not Classified", "Not Classified", "Not Classified"],
+    ["Y", "Undefined", "-", "-", "Relay", "-"],
+    ["Z", "Position", "-", "-", "Unclassified Final Control Element", "-"]
+
+];
+
+var readListElement = document.getElementById("read-list");
+var tableElement = document.getElementById("table");
+//var tableElement = document.createElement("table");
+
+for (var i = 0; i < lista_isa.length; i++) {
+    var rowElement = document.createElement("tr");
+    for (var j = 0; j < lista_isa[i].length; j++) {
+        var cellElement = document.createElement("td");
+        cellElement.textContent = lista_isa[i][j];
+        rowElement.appendChild(cellElement);
+    }
+    tableElement.appendChild(rowElement);
+}
+
+readListElement.appendChild(tableElement);
+
+</script>
+
+{% endblock %}

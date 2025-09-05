@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block content %}
+  
+<link rel="stylesheet" href="{{ url_for('static', filename='css/eng-styles.css') }}" />
+
+
+<!-- Botões no topo -->
+<div class="top-side">
+   <button type="submit" class="btn btn-success" ><a href="{{ url_for('voltage_drop') }}" class="small-box-footer">Voltage Drop <i class="fa-regular fa-regular fa-lightbulb"></i></a></button>
+  <button type="submit" class="btn btn-warning" ><a href="{{ url_for('eletro_dim') }}" class="small-box-footer">Eletro Dimension <i class="fa-regular fa-circle-left"></i></a></button>
+  <button type="submit" class="btn btn-warning" ><a href="{{ url_for('cabletray_dim') }}" class="small-box-footer">Cable Tray Dimension <i class="fa-regular fa-circle-left"></i></a></button>
+  <button type="submit" class="btn btn-info" ><a href="{{ url_for('isa') }}" class="small-box-footer">ISA 5.1 <i class="fa-regular fa-circle-left"></i></a></button>
+  <button type="submit" class="btn btn-primary" ><a href="{{ url_for('excel_upload') }}" class="small-box-footer">Read Tables <i class="fa-regular fa-circle-left"></i></a></button>
+</div>
+
+<!-- Container principal -->
+<div class="container">
+  <!-- Esquerda -->
+  <div class="title-eng">
+    Engineering <br> Solutions
+  </div>
+
+  <!-- Meio -->
+  <img class="inicial-log" src="{{ url_for('static', filename='Solutions.png') }}" alt="Inicial-Log" />
+
+  <!-- Direita -->
+  <div class="right-side">
+    <div class="time-box-container">
+      <div class="time-box">
+        <h2>Hora en España</h2>
+        <div class="clock" id="spain-time">13:51:21</div>
+      </div>
+      <div class="time-box">
+        <h2>Hora en Brasil</h2>
+        <div class="clock" id="brazil-time">08:51:21</div>
+      </div>
+      <div class="time-box">
+        <h2>Week of the year</h2>
+        <div class="clock" id="semana">Week 33</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function updateClocks() {
+  const now = new Date();
+
+  // --- Horário Brasil (São Paulo UTC-3) ---
+  const brasilOptions = { timeZone: 'America/Sao_Paulo', hour12: false };
+  const brasilTime = now.toLocaleTimeString('pt-BR', brasilOptions);
+  document.getElementById('brazil-time').textContent = brasilTime;
+
+  // --- Horário Espanha (Madrid UTC+1 / UTC+2) ---
+  const spainOptions = { timeZone: 'Europe/Madrid', hour12: false };
+  const spainTime = now.toLocaleTimeString('es-ES', spainOptions);
+  document.getElementById('spain-time').textContent = spainTime;
+
+  // --- Semana do ano ---
+  const startOfYear = new Date(now.getFullYear(), 0, 1);
+  const pastDays = Math.floor((now - startOfYear) / (24 * 60 * 60 * 1000));
+  const weekNumber = Math.ceil((pastDays + startOfYear.getDay() + 1) / 7);
+  document.getElementById('semana').textContent = 'Week ' + weekNumber;
+}
+
+setInterval(updateClocks, 1000);
+updateClocks();
+</script>
+
+{% endblock %}

@@ -1,0 +1,84 @@
+
+.container{
+    margin: 10px;
+    width: 100%;
+}
+
+/* Container da tabela */
+.table-container {
+    width: 100%;
+    max-width: 100%;          /* Garante que não ultrapasse o main */
+    max-height: 80vh;         /* Altura máxima */
+    overflow: auto;           /* Scroll horizontal e vertical */
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+
+    box-sizing: border-box;   /* Inclui padding na largura total */
+}
+
+/* Tabela */
+.table-container table {
+    width: max-content;       /* Permite a tabela expandir horizontalmente */
+    min-width: 100%;          /* Mantém 100% do container se poucas colunas */
+    border-collapse: collapse;
+}
+
+/* Cabeçalho fixo */
+.table-container th {
+    position: sticky;
+    top: 0;
+    background-color: #007bff;
+    color: white;
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+/* Células */
+.table-container td {
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+/* Filtros */
+.filter-row input {
+    width: 100%;
+    padding: 4px;
+    box-sizing: border-box;
+}
+
+.table-wrapper {
+  max-height: 70vh;   /* altura máxima visível da tabela */
+  overflow: auto;     /* barras de rolagem aparecem quando necessário */
+  width: 100%;
+}
+
+#excelTable {
+  border-collapse: collapse;
+  width: 120%;        /* ou ajuste conforme necessário */
+  min-width: 1000px;  /* força a tabela a não quebrar */
+}
+
+#excelTable th,
+#excelTable td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+#excelTable thead th {
+  position: sticky;
+  top: 0;             /* mantém cabeçalho no topo */
+  background-color: #f8f9fa;
+  z-index: 3;
+}
+
+#excelTable .filter-row th {
+  position: sticky;
+  top: 40px;          /* ajusta de acordo com a altura do cabeçalho real */
+  background-color: #e9ecef;
+  z-index: 2;
+}

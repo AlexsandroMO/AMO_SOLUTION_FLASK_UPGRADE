@@ -1,0 +1,65 @@
+/* Small Box (estilo AdminLTE simplificado) */
+
+/* Garante que o footer fique no final da página */
+body, html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main.container {
+    flex: 1 0 auto; /* Faz o main ocupar o espaço restante */
+    align-items: center;
+}
+
+.main-footer {
+    flex-shrink: 0;
+}
+
+.small-box {
+  border-radius: 0.75rem;
+  position: relative;
+  display: block;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+  color: #fff;
+  padding: 18px;
+  overflow: hidden;
+}
+.small-box .inner h3 {
+  font-size: 2.1rem;
+  font-weight: 800;
+  margin: 0 0 10px 0;
+}
+.small-box .inner p {
+  font-size: 1.05rem;
+  margin: 0;
+}
+.small-box .icon {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 3rem;
+  opacity: 0.25;
+}
+.small-box .small-box-footer {
+  display: inline-block;
+  padding: 6px 12px;
+  background: rgba(0,0,0,0.12);
+  text-decoration: none;
+  color: #fff;
+  margin-top: 12px;
+  border-radius: 0.35rem;
+}
+.small-box .small-box-footer:hover { background: rgba(0,0,0,0.22); }
+
+.bg-primary { background-color: #0d6efd !important; }
+.bg-success { background-color: #198754 !important; }
+.bg-warning { background-color: #ffc107 !important; color: #1f1f1f; }
+
+/* Ajustes gerais */
+.navbar-brand { letter-spacing: .3px; }
+main.container { min-height: 60vh; }
