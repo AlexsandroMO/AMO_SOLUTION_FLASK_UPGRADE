@@ -1,1 +1,54 @@
-<!-- dashboard.html pronto -->
+{% extends 'base.html' %}
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/meds.css') }}" />
+
+<div class="container py-3">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>Seus Remédios</h3>
+    <div>
+      <a class="btn btn-primary" href="{{ url_for('add_med') }}"><i class="fa fa-plus"></i> Adicionar</a>
+      <a class="btn btn-outline-danger" href="{{ url_for('logout_med') }}">Sair</a>
+    </div>
+  </div>
+
+  {% if meds|length == 0 %}
+    <div class="alert alert-info">Nenhum remédio cadastrado ainda.</div>
+  {% endif %}
+
+  <div class="row g-3">
+    {% for item in meds %}
+      {% set m = item.med %}
+      <div class="col-md-6 col-lg-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">{{ m.name }}</h5>
+            <p class="mb-1"><b>Por dose:</b> {{ m.pills_per_intake }}</p>
+            <p class="mb-1"><b>Na caixa:</b> {{ m.pills_per_box }}</p>
+            <p class="mb-1"><b>Inicial:</b> {{ m.initial_pills }}</p>
+            {% if m.notes %}<p class="text-muted small">{{ m.notes }}</p>{% endif %}
+            <hr>
+            <p class="mb-1"><b>Tomadas:</b> {{ item.taken }}</p>
+            <p class="mb-1"><b>Restantes:</b> {{ item.remaining }}</p>
+            <p class="mb-2"><b>Por dia (agendado):</b> {{ item.per_day or 0 }}</p>
+            {% if item.days_left is not none %}
+              <p class="mb-2"><b>Dias restantes (estimado):</b> {{ item.days_left }}</p>
+              {% if item.days_left <= 1 %}
+                <div class="alert alert-warning p-2 mb-0">Atenção: está acabando!</div>
+              {% endif %}
+            {% endif %}
+          </div>
+          <div class="card-footer d-flex gap-2">
+            <form method="post" action="{{ url_for('take_now', med_id=m.id) }}">
+              <button class="btn btn-success btn-sm"><i class="fa fa-check"></i> Tomei agora</button>
+            </form>
+            <a class="btn btn-outline-primary btn-sm" href="{{ url_for('schedule', med_id=m.id) }}"><i class="fa fa-bell"></i> Agendar</a>
+            <a class="btn btn-outline-secondary btn-sm" href="{{ url_for('timeline', med_id=m.id) }}"><i class="fa fa-clock"></i> Timeline</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

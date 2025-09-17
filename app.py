@@ -175,7 +175,7 @@ def register_med():
                          (username, generate_password_hash(password)))
             conn.commit()
             flash('Cadastro realizado, faça login.', 'success')
-            return redirect(url_for('meds.login_med'))
+            return redirect(url_for('login_med'))
         conn.close()
     return render_template('meds/register-med.html')
 
@@ -190,7 +190,7 @@ def login_med():
         if user and check_password_hash(user['password'], password):
             session['meds_user_id'] = user['id']
             session['meds_username'] = user['username']
-            return redirect(url_for('meds.dashboard'))
+            return redirect(url_for('dashboard'))
         else:
             flash('Login inválido', 'danger')
     return render_template('meds/login-med.html')
@@ -199,12 +199,12 @@ def login_med():
 def logout_med():
     session.pop('meds_user_id', None)
     session.pop('meds_username', None)
-    return redirect(url_for('meds.login_med'))
+    return redirect(url_for('login_med'))
 
 @app.route('/dashboard')
 def dashboard():
     if 'meds_user_id' not in session:
-        return redirect(url_for('meds.login_med'))
+        return redirect(url_for('login_med'))
     conn = get_db_connection()
     meds = conn.execute('SELECT * FROM medications WHERE user_id = ?', (session['meds_user_id'],)).fetchall()
     conn.close()
@@ -213,7 +213,7 @@ def dashboard():
 @app.route('/add_med', methods=['GET', 'POST'])
 def add_med():
     if 'meds_user_id' not in session:
-        return redirect(url_for('meds.login'))
+        return redirect(url_for('login_med'))
     if request.method == 'POST':
         name = request.form['name']
         total_pills = int(request.form['total_pills'])
@@ -224,13 +224,13 @@ def add_med():
                      (session['meds_user_id'], name, total_pills, pills_per_dose, times_per_day))
         conn.commit()
         conn.close()
-        return redirect(url_for('meds.dashboard'))
+        return redirect(url_for('dashboard'))
     return render_template('meds/add_med.html')
 
 @app.route('/take_med/<int:med_id>')
 def take_med(med_id):
     if 'meds_user_id' not in session:
-        return redirect(url_for('meds.login_med'))
+        return redirect(url_for('login_med'))
     conn = get_db_connection()
     med = conn.execute('SELECT * FROM medications WHERE id = ? AND user_id = ?', (med_id, session['meds_user_id'])).fetchone()
     if med:
@@ -240,12 +240,12 @@ def take_med(med_id):
         conn.execute('UPDATE medications SET total_pills = ? WHERE id = ?', (new_total, med_id))
         conn.commit()
     conn.close()
-    return redirect(url_for('meds.dashboard'))
+    return redirect(url_for('dashboard'))
 
 @app.route('/timeline/<int:med_id>')
 def timeline(med_id):
     if 'meds_user_id' not in session:
-        return redirect(url_for('meds.login_med'))
+        return redirect(url_for('login_med'))
     conn = get_db_connection()
     med = conn.execute('SELECT * FROM medications WHERE id = ? AND user_id = ?', (med_id, session['meds_user_id'])).fetchone()
     logs = conn.execute('SELECT * FROM timeline WHERE med_id = ? AND user_id = ? ORDER BY taken_at DESC',
