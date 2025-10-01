@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% block content %}
+
+  <style>
+    body{ font-family:Segoe UI, Roboto, Arial, sans-serif; margin:24px; background:#fff; color:#111 }
+    h1{ font-size:42px; margin:0 0 18px; color:#4a7b2d }
+    .table-wrap{ overflow:auto; border:2px solid #333; border-radius:6px }
+    table{ border-collapse:collapse; width:100%; min-width:900px }
+    td,th{ border:1px solid #333; padding:14px; vertical-align:middle; text-align:center; font-size:15px }
+    td.desc{ text-align:left; font-weight:500 }
+    .symbol{ width:70px; height:70px }
+  </style>
+
+  <h1>Simbologia e Identificação</h1>
+  <div class="table-wrap">
+    <table>
+      <tr>
+        <td></td>
+        <td>Montado no campo</td>
+        <td>Montado no painel principal de controle</td>
+        <td>Montado atrás do painel principal de controle</td>
+        <td>Montado em painel local ou do equipamento</td>
+      </tr>
+      <tr>
+        <td class="desc">Instrumento Discreto</td>
+        <td>
+          <svg class="symbol" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="40" stroke="#333" stroke-width="2" fill="none" />
+          </svg>
+        </td>
+        <td>
+          <svg class="symbol" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="40" stroke="#333" stroke-width="2" fill="none" />
+            <line x1="10" y1="50" x2="90" y2="50" stroke="#333" stroke-width="2" />
+          </svg>
+        </td>
+        <td>
+          <svg class="symbol" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="40" stroke="#333" stroke-width="2" fill="none" />
+            <line x1="10" y1="50" x2="90" y2="50" stroke="#333" stroke-width="2" stroke-dasharray="6,6" />
+          </svg>
+        </td>
+        <td>
+          <svg class="symbol" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="40" stroke="#333" stroke-width="2" fill="none" />
+            <line x1="10" y1="50" x2="90" y2="50" stroke="#333" stroke-width="2" />
+            <line x1="20" y1="50" x2="80" y2="50" stroke="#333" stroke-width="4" />
+          </svg>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="desc">Sistema de Controle Básico (CLP de Controle)</td>
+        <td>
+          <svg class="symbol" viewBox="0 0 100 100">
+            <rect x="10" y="10" width="80" height="80" stroke="#333" stroke-width="2" fill="none" />
+            <circle cx="50" cy="50" r="40" stroke="#333" stroke-width="2" fill="none" />
+          </svg>
+        </td>
+        <td>
+          <svg class="symbol" viewBox="0 0 100 100">
+            <rect x="10" y="10" width="80" height="80" stroke="#333" stroke-width="2" fill="none" />
+            <circle cx="50" cy="50" r="40" stroke="#333" stroke-width="2" fill="none" />
+            <line x1="10" y1="50" x2="90" y2="50" stroke="#333" stroke-width="2" />
+          </svg>
+        </td>
+        <td>
+          <svg class="symbol" viewBox="0 0 100 100">
+            <rect x="10" y="10" width="80" height="80" stroke="#333" stroke-width="2" fill="none" />
+            <circle cx="50" cy="50" r="40" stroke="#333" stroke-width="2" fill="none" />
+            <line x1="10" y1="50" x2="90" y2="50" stroke="#333" stroke-width="2" stroke-dasharray="6,6" />
+          </svg>
+        </td>
+        <td>
+          <svg class="symbol" viewBox="0 0 100 100">
+            <rect x="10" y="10" width="80" height="80" stroke="#333" stroke-width="2" fill="none" />
+            <circle cx="50" cy="50" r="40" stroke="#333" stroke-width="2" fill="none" />
+            <line x1="10" y1="50" x2="90" y2="50" stroke="#333" stroke-width="4" />
+          </svg>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="desc">Função do equipamento executada no computador</td>
+        <td>
+          <svg class="symbol" viewBox="0 0 100 100">
+            <polygon points="50,10 90,35 90,65 50,90 10,65 10,35" stroke="#333" stroke-width="2" fill="none" />
+          </svg>
+        </td>
+        <td>
+          <svg class="symbol" viewBox="0 0 100 100">
+            <polygon points="50,10 90,35 90,65 50,90 10,65 10,35" stroke="#333" stroke-width="2" fill="none" />
+            <line x1="10" y1="50" x2="90" y2="50" stroke="#333" stroke-width="2" />
+          </svg>
+        </td>
+        <td>
+          <svg class="symbol" viewBox="0 0 100 100">
+            <polygon points="50,10 90,35 90,65 50,90 10,65 10,35" stroke="#333" stroke-width="2" fill="none" />
+            <line x1="10" y1="50" x2="90" y2="50" stroke="#333" stroke-width="2" stroke-dasharray="6,6" />
+          </svg>
+        </td>
+        <td>
+          <svg class="symbol" viewBox="0 0 100 100">
+            <polygon points="50,10 90,35 90,65 50,90 10,65 10,35" stroke="#333" stroke-width="2" fill="none" />
+            <line x1="10" y1="50" x2="90" y2="50" stroke="#333" stroke-width="4" />
+          </svg>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="desc">Sistema Instrumentado de Segurança (CLP de Segurança)</td>
+        <td>
+          <svg class="symbol" viewBox="0 0 100 100">
+            <rect x="10" y="10" width="80" height="80" stroke="#333" stroke-width="2" fill="none" />
+            <polygon points="50,10 90,50 50,90 10,50" stroke="#333" stroke-width="2" fill="none" />
+          </svg>
+        </td>
+        <td>
+          <svg class="symbol" viewBox="0 0 100 100">
+            <rect x="10" y="10" width="80" height="80" stroke="#333" stroke-width="2" fill="none" />
+            <polygon points="50,10 90,50 50,90 10,50" stroke="#333" stroke-width="2" fill="none" />
+            <line x1="10" y1="50" x2="90" y2="50" stroke="#333" stroke-width="2" />
+          </svg>
+        </td>
+        <td>
+          <svg class="symbol" viewBox="0 0 100 100">
+            <rect x="10" y="10" width="80" height="80" stroke="#333" stroke-width="2" fill="none" />
+            <polygon points="50,10 90,50 50,90 10,50" stroke="#333" stroke-width="2" fill="none" />
+            <line x1="10" y1="50" x2="90" y2="50" stroke="#333" stroke-width="2" stroke-dasharray="6,6" />
+          </svg>
+        </td>
+        <td>
+          <svg class="symbol" viewBox="0 0 100 100">
+            <rect x="10" y="10" width="80" height="80" stroke="#333" stroke-width="2" fill="none" />
+            <polygon points="50,10 90,50 50,90 10,50" stroke="#333" stroke-width="2" fill="none" />
+            <line x1="10" y1="50" x2="90" y2="50" stroke="#333" stroke-width="4" />
+          </svg>
+        </td>
+      </tr>
+    </table>
+
+
+{% endblock %}

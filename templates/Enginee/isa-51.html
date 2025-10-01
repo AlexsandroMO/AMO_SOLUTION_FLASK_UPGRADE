@@ -3,6 +3,22 @@
 
 <style>
 
+   
+    h1{ font-size:42px; margin:0 0 18px; color:#4a7b2d }
+    .table-wrap{ overflow:auto; border:2px solid #333; border-radius:6px }
+    table{ border-collapse:collapse; width:100%; min-width:900px }
+    td,th{ border:1px solid #333; padding:14px; vertical-align:middle; text-align:center; font-size:15px }
+    td.desc{ text-align:left; font-weight:500 }
+    .symbol{ width:70px; height:70px }
+
+    td,th{ border:1px solid var(--border); padding:18px; vertical-align:middle; text-align:center }
+    td.desc{ font-size:16px; text-align:left }
+    .symbol{ width:220px; height:48px; display:inline-block }
+    .small-symbol{ width:160px; height:36px }
+    caption{ text-align:left; padding:12px 18px; font-size:18px; font-weight:600 }
+    @media(max-width:800px){ h1{font-size:32px} td,th{padding:10px} }
+
+
   table {
     border-collapse: collapse;
     width: 100%;
@@ -47,7 +63,306 @@
           </div>
         </div>
       </div>
-      </section>
+ 
+<br>
+
+  <h1>Symbology Identification 1</h1>
+  <div class="table-wrap">
+    <table>
+      <tr>
+        <td></td>
+      <th>Mounted in the field</th>
+      <th>Mounted on the main control panel</th>
+      <th>Mounted behind the main control panel</th>
+      <th>Mounted on local panel or equipment</th>
+      </tr>
+      <tr>
+        <td class="desc">Discrete Instrument</td>
+        <td>
+          <svg class="symbol" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="40" stroke="#333" stroke-width="2" fill="none" />
+          </svg>
+        </td>
+        <td>
+          <svg class="symbol" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="40" stroke="#333" stroke-width="2" fill="none" />
+            <line x1="10" y1="50" x2="90" y2="50" stroke="#333" stroke-width="2" />
+          </svg>
+        </td>
+        <td>
+          <svg class="symbol" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="40" stroke="#333" stroke-width="2" fill="none" />
+            <line x1="10" y1="50" x2="90" y2="50" stroke="#333" stroke-width="2" stroke-dasharray="6,6" />
+          </svg>
+        </td>
+        <td>
+          <svg class="symbol" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="40" stroke="#333" stroke-width="2" fill="none" />
+            <line x1="10" y1="50" x2="90" y2="50" stroke="#333" stroke-width="2" />
+            <line x1="20" y1="50" x2="80" y2="50" stroke="#333" stroke-width="4" />
+          </svg>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="desc">Basic Control System (PLC)</td>
+        <td>
+          <svg class="symbol" viewBox="0 0 100 100">
+            <rect x="10" y="10" width="80" height="80" stroke="#333" stroke-width="2" fill="none" />
+            <circle cx="50" cy="50" r="40" stroke="#333" stroke-width="2" fill="none" />
+          </svg>
+        </td>
+        <td>
+          <svg class="symbol" viewBox="0 0 100 100">
+            <rect x="10" y="10" width="80" height="80" stroke="#333" stroke-width="2" fill="none" />
+            <circle cx="50" cy="50" r="40" stroke="#333" stroke-width="2" fill="none" />
+            <line x1="10" y1="50" x2="90" y2="50" stroke="#333" stroke-width="2" />
+          </svg>
+        </td>
+        <td>
+          <svg class="symbol" viewBox="0 0 100 100">
+            <rect x="10" y="10" width="80" height="80" stroke="#333" stroke-width="2" fill="none" />
+            <circle cx="50" cy="50" r="40" stroke="#333" stroke-width="2" fill="none" />
+            <line x1="10" y1="50" x2="90" y2="50" stroke="#333" stroke-width="2" stroke-dasharray="6,6" />
+          </svg>
+        </td>
+        <td>
+          <svg class="symbol" viewBox="0 0 100 100">
+            <rect x="10" y="10" width="80" height="80" stroke="#333" stroke-width="2" fill="none" />
+            <circle cx="50" cy="50" r="40" stroke="#333" stroke-width="2" fill="none" />
+            <line x1="10" y1="50" x2="90" y2="50" stroke="#333" stroke-width="4" />
+          </svg>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="desc">Equipment Function Executed on Computer</td>
+        <td>
+          <svg class="symbol" viewBox="0 0 100 100">
+            <polygon points="50,10 90,35 90,65 50,90 10,65 10,35" stroke="#333" stroke-width="2" fill="none" />
+          </svg>
+        </td>
+        <td>
+          <svg class="symbol" viewBox="0 0 100 100">
+            <polygon points="50,10 90,35 90,65 50,90 10,65 10,35" stroke="#333" stroke-width="2" fill="none" />
+            <line x1="10" y1="50" x2="90" y2="50" stroke="#333" stroke-width="2" />
+          </svg>
+        </td>
+        <td>
+          <svg class="symbol" viewBox="0 0 100 100">
+            <polygon points="50,10 90,35 90,65 50,90 10,65 10,35" stroke="#333" stroke-width="2" fill="none" />
+            <line x1="10" y1="50" x2="90" y2="50" stroke="#333" stroke-width="2" stroke-dasharray="6,6" />
+          </svg>
+        </td>
+        <td>
+          <svg class="symbol" viewBox="0 0 100 100">
+            <polygon points="50,10 90,35 90,65 50,90 10,65 10,35" stroke="#333" stroke-width="2" fill="none" />
+            <line x1="10" y1="50" x2="90" y2="50" stroke="#333" stroke-width="4" />
+          </svg>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="desc">Safety Instrumented System (SIS - Safety PLC)</td>
+        <td>
+          <svg class="symbol" viewBox="0 0 100 100">
+            <rect x="10" y="10" width="80" height="80" stroke="#333" stroke-width="2" fill="none" />
+            <polygon points="50,10 90,50 50,90 10,50" stroke="#333" stroke-width="2" fill="none" />
+          </svg>
+        </td>
+        <td>
+          <svg class="symbol" viewBox="0 0 100 100">
+            <rect x="10" y="10" width="80" height="80" stroke="#333" stroke-width="2" fill="none" />
+            <polygon points="50,10 90,50 50,90 10,50" stroke="#333" stroke-width="2" fill="none" />
+            <line x1="10" y1="50" x2="90" y2="50" stroke="#333" stroke-width="2" />
+          </svg>
+        </td>
+        <td>
+          <svg class="symbol" viewBox="0 0 100 100">
+            <rect x="10" y="10" width="80" height="80" stroke="#333" stroke-width="2" fill="none" />
+            <polygon points="50,10 90,50 50,90 10,50" stroke="#333" stroke-width="2" fill="none" />
+            <line x1="10" y1="50" x2="90" y2="50" stroke="#333" stroke-width="2" stroke-dasharray="6,6" />
+          </svg>
+        </td>
+        <td>
+          <svg class="symbol" viewBox="0 0 100 100">
+            <rect x="10" y="10" width="80" height="80" stroke="#333" stroke-width="2" fill="none" />
+            <polygon points="50,10 90,50 50,90 10,50" stroke="#333" stroke-width="2" fill="none" />
+            <line x1="10" y1="50" x2="90" y2="50" stroke="#333" stroke-width="4" />
+          </svg>
+        </td>
+      </tr>
+    </table>
+
+
+
+    <br>
+
+
+<h1>Symbology Identification 2</h1>
+  <div class="table-wrap">
+    <table>
+      <caption>Graphical Legend of Signals</caption>
+      <tr>
+        <td><!-- supply/impulse single line -->
+          <svg class="symbol" viewBox="0 0 220 48" xmlns="http://www.w3.org/2000/svg">
+            <line x1="10" y1="24" x2="210" y2="24" stroke="#333" stroke-width="2" />
+          </svg>
+        </td>
+        <td class="desc">Supply or Impulse</td>
+        <td><!-- undefined signal: short slashes on line -->
+          <svg class="symbol" viewBox="0 0 220 48" xmlns="http://www.w3.org/2000/svg">
+            <line x1="10" y1="24" x2="210" y2="24" stroke="#333" stroke-width="2" />
+            <line x1="70" y1="14" x2="82" y2="34" stroke="#333" stroke-width="2" />
+            <line x1="98" y1="14" x2="110" y2="34" stroke="#333" stroke-width="2" />
+          </svg>
+        </td>
+        <td class="desc">Undefined signal</td>
+      </tr>
+
+      <tr>
+        <td><!-- pneumatic signal: slashes groups -->
+          <svg class="symbol" viewBox="0 0 220 48" xmlns="http://www.w3.org/2000/svg">
+            <line x1="10" y1="24" x2="210" y2="24" stroke="#333" stroke-width="2" />
+            <!-- group of slashes left and right -->
+            <g stroke="#333" stroke-width="2" stroke-linecap="round">
+              <line x1="50" y1="14" x2="62" y2="34" />
+              <line x1="58" y1="14" x2="70" y2="34" />
+
+              <line x1="130" y1="14" x2="142" y2="34" />
+              <line x1="138" y1="14" x2="150" y2="34" />
+            </g>
+          </svg>
+        </td>
+        <td class="desc">Pneumatic Signal</td>
+        <td><!-- electrical signal: slashes + dashed -->
+          <svg class="symbol" viewBox="0 0 220 48" xmlns="http://www.w3.org/2000/svg">
+            <line x1="10" y1="12" x2="210" y2="12" stroke="#333" stroke-width="2" />
+            <line x1="10" y1="36" x2="210" y2="36" stroke="#333" stroke-width="2" />
+            <!-- slashes on top line -->
+            <g stroke="#333" stroke-width="2">
+              <line x1="60" y1="6" x2="72" y2="26" />
+              <line x1="78" y1="6" x2="90" y2="26" />
+              <line x1="120" y1="6" x2="132" y2="26" />
+              <line x1="138" y1="6" x2="150" y2="26" />
+            </g>
+            <!-- dashed middle line -->
+            <g stroke="#333" stroke-width="2" stroke-dasharray="6,6">
+              <line x1="10" y1="24" x2="210" y2="24" />
+            </g>
+          </svg>
+        </td>
+        <td class="desc">Electrical Signal</td>
+      </tr>
+
+      <tr>
+        <td><!-- hydraulic: L-like breaks -->
+          <svg class="symbol" viewBox="0 0 220 48" xmlns="http://www.w3.org/2000/svg">
+            <line x1="10" y1="24" x2="210" y2="24" stroke="#333" stroke-width="2" />
+            <g stroke="#333" stroke-width="2">
+              <path d="M70 24 L70 16" />
+              <path d="M70 16 L86 16" />
+              <path d="M140 24 L140 16" />
+              <path d="M140 16 L156 16" />
+            </g>
+          </svg>
+        </td>
+        <td class="desc">Hydraulic Signal</td>
+        <td><!-- capillary tube: X marks -->
+          <svg class="symbol" viewBox="0 0 220 48" xmlns="http://www.w3.org/2000/svg">
+            <line x1="10" y1="24" x2="210" y2="24" stroke="#333" stroke-width="2" />
+            <g stroke="#333" stroke-width="2">
+              <line x1="70" y1="14" x2="82" y2="34" />
+              <line x1="82" y1="14" x2="70" y2="34" />
+
+              <line x1="140" y1="14" x2="152" y2="34" />
+              <line x1="152" y1="14" x2="140" y2="34" />
+            </g>
+          </svg>
+        </td>
+        <td class="desc">Capillary Tube</td>
+      </tr>
+
+      <tr>
+        <td><!-- guided EM or sonic: sine on line (one wave on center)  -->
+          <svg class="symbol" viewBox="0 0 220 48" xmlns="http://www.w3.org/2000/svg">
+            <line x1="10" y1="24" x2="210" y2="24" stroke="#333" stroke-width="2" />
+            <path d="M30 24 C45 12, 75 12, 90 24 C105 36, 135 36, 150 24" fill="none" stroke="#333" stroke-width="2" />
+          </svg>
+        </td>
+        <td class="desc">Electromagnetic or Sonic Signal<br/>(Guided Transmission)<br/></td>
+        <td><!-- unguided EM/sonic: free wave symbols -->
+          <svg class="symbol" viewBox="0 0 220 48" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 24 C35 12, 55 12, 70 24" fill="none" stroke="#333" stroke-width="2" />
+            <path d="M100 24 C115 12, 135 12, 150 24" fill="none" stroke="#333" stroke-width="2" />
+          </svg>
+        </td>
+        <td class="desc">Electromagnetic or sonic signal<br/>(unguided transmission)<br/></td>
+      </tr>
+
+      <tr>
+        <td><!-- software configured: circles on line -->
+          <svg class="symbol" viewBox="0 0 220 48" xmlns="http://www.w3.org/2000/svg">
+            <line x1="10" y1="24" x2="210" y2="24" stroke="#333" stroke-width="2" />
+            <circle cx="80" cy="24" r="6" stroke="#333" stroke-width="2" fill="#fff" />
+            <circle cx="140" cy="24" r="6" stroke="#333" stroke-width="2" fill="#fff" />
+          </svg>
+        </td>
+        <td class="desc">Connection Configured Internally to the System (Software Connection)</td>
+        <td><!-- mechanical link: circled dot on line -->
+          <svg class="symbol" viewBox="0 0 220 48" xmlns="http://www.w3.org/2000/svg">
+            <line x1="10" y1="24" x2="210" y2="24" stroke="#333" stroke-width="2" />
+            <g>
+              <circle cx="80" cy="24" r="8" stroke="#333" stroke-width="2" fill="#fff" />
+              <circle cx="80" cy="24" r="2" fill="#333" />
+              <circle cx="140" cy="24" r="8" stroke="#333" stroke-width="2" fill="#fff" />
+              <circle cx="140" cy="24" r="2" fill="#333" />
+            </g>
+          </svg>
+        </td>
+        <td class="desc">Mechanical Connection</td>
+      </tr>
+
+      <tr>
+        <td><!-- binary pneumatic: crossed slashes on line -->
+          <svg class="symbol" viewBox="0 0 220 48" xmlns="http://www.w3.org/2000/svg">
+            <line x1="10" y1="24" x2="210" y2="24" stroke="#333" stroke-width="2" />
+            <g stroke="#333" stroke-width="2">
+              <line x1="58" y1="14" x2="70" y2="34" />
+              <line x1="70" y1="14" x2="58" y2="34" />
+              <line x1="110" y1="14" x2="122" y2="34" />
+              <line x1="122" y1="14" x2="110" y2="34" />
+            </g>
+          </svg>
+        </td>
+        <td class="desc">Binary Pneumatic Signal</td>
+        <td><!-- binary electrical: crossed slashes + dashed line variants -->
+          <svg class="symbol" viewBox="0 0 220 48" xmlns="http://www.w3.org/2000/svg">
+            <line x1="10" y1="12" x2="210" y2="12" stroke="#333" stroke-width="2" />
+            <line x1="10" y1="36" x2="210" y2="36" stroke="#333" stroke-width="2" />
+            <g stroke="#333" stroke-width="2">
+              <line x1="50" y1="6" x2="62" y2="26" />
+              <line x1="62" y1="6" x2="50" y2="26" />
+
+              <line x1="120" y1="6" x2="132" y2="26" />
+              <line x1="132" y1="6" x2="120" y2="26" />
+            </g>
+            <g stroke="#333" stroke-width="2" stroke-dasharray="6,6">
+              <line x1="10" y1="24" x2="210" y2="24" />
+            </g>
+            <g stroke="#333" stroke-width="2">
+              <line x1="90" y1="30" x2="110" y2="18" />
+            </g>
+          </svg>
+        </td>
+        <td class="desc">Binary Electrical Signal</td>
+      </tr>
+
+    </table>
+
+
+
+
     </div>
 
 

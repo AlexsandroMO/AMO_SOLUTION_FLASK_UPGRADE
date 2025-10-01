@@ -150,6 +150,16 @@ def cabletray_dim():
     return render_template('Enginee/cabletray-dimension.html', page_title="Cable Tray Dimension")
 
 
+# @app.route('/isa_simb_ident1')
+# def isa_simb_ident1():
+#     return render_template('Enginee/isa-simb-ident1.html', page_title="ISA Symbology Identification 1")
+
+
+# @app.route('/isa_simb_ident2')
+# def isa_simb_ident2():
+#     return render_template('Enginee/isa-simb-ident2.html', page_title="ISA Symbology Identification 2")
+
+
 
 
 ### ------------------------------------ Med ----------------------------------------------
